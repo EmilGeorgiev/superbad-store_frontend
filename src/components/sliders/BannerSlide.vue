@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <swiper
+    <swiper-container
       style="padding: 0 8px 10px 8px"
       class="w-full pb-2"
       :slides-per-view="1"
@@ -14,13 +14,17 @@
       <swiper-slide v-for="item in banners" :key="item.id" class="w-full">
         <img class="w-full h-[380px] object-cover rounded-md" :src="item.image" alt="" />
       </swiper-slide>
-    </swiper>
+    </swiper-container>
   </div>
 </template>
 <script setup>
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
 const mySwiper = ref(null)
 
 const onSwiper = (swiper) => {
